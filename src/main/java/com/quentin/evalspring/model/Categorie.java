@@ -1,5 +1,6 @@
 package com.quentin.evalspring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -20,6 +21,8 @@ public class Categorie {
 
     // Relation OneToMany : Une catégorie peut avoir plusieurs produits
     @OneToMany(mappedBy = "categorie")
+    @JsonIgnore // <-- Ignore la liste des produits pour éviter la boucle
+
     private List<Produit> produits;
 
     /*---------------------------------------
